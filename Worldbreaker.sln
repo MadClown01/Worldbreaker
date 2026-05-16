@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worldbreaker", "Worldbreaker.csproj", "{56054067-AF67-4BE2-B4AE-0F47F3D81DAF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{56054067-AF67-4BE2-B4AE-0F47F3D81DAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56054067-AF67-4BE2-B4AE-0F47F3D81DAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56054067-AF67-4BE2-B4AE-0F47F3D81DAF}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{56054067-AF67-4BE2-B4AE-0F47F3D81DAF}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{56054067-AF67-4BE2-B4AE-0F47F3D81DAF}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{56054067-AF67-4BE2-B4AE-0F47F3D81DAF}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal

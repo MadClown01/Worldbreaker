@@ -11,12 +11,17 @@ config_version=5
 [application]
 
 config/name="Worldbreaker"
-config/features=PackedStringArray("4.6", "Forward Plus")
+run/main_scene="uid://m30ru424m0cw"
+config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [dotnet]
 
 project/assembly_name="Worldbreaker"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gdUnit4/plugin.cfg")
 
 [physics]
 
