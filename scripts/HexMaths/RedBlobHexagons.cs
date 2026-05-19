@@ -8,13 +8,13 @@ namespace RedBlobHexagons
 {
 	public struct Point
 	{
+		public readonly double x;
+		public readonly double y;
 		public Point(double x, double y)
 		{
 			this.x = x;
 			this.y = y;
 		}
-		public readonly double x;
-		public readonly double y;
 	}
 
 	public struct Hex
@@ -329,7 +329,6 @@ namespace RedBlobHexagons
 			return new Point(x + origin.x, y + origin.y);
 		}
 
-
 		public FractionalHex PixelToHexFractional(Point p)
 		{
 			Orientation M = orientation;
@@ -339,12 +338,10 @@ namespace RedBlobHexagons
 			return new FractionalHex(q, r, -q - r);
 		}
 
-
 		public Hex PixelToHexRounded(Point p)
 		{
 			return PixelToHexFractional(p).HexRound();
 		}
-
 
 		public Point HexCornerOffset(int corner)
 		{
@@ -352,7 +349,6 @@ namespace RedBlobHexagons
 			double angle = 2.0 * Math.PI * (M.start_angle - corner) / 6.0;
 			return new Point(size.x * Math.Cos(angle), size.y * Math.Sin(angle));
 		}
-
 
 		public List<Point> PolygonCorners(Hex h)
 		{
@@ -384,7 +380,6 @@ namespace RedBlobHexagons
 			}
 		}
 
-
 		static public void EqualOffsetcoord(String name, OffsetCoord a, OffsetCoord b)
 		{
 			if (!(a.col == b.col && a.row == b.row))
@@ -392,7 +387,6 @@ namespace RedBlobHexagons
 				Tests.Complain(name);
 			}
 		}
-
 
 		static public void EqualDoubledcoord(String name, DoubledCoord a, DoubledCoord b)
 		{
@@ -402,7 +396,6 @@ namespace RedBlobHexagons
 			}
 		}
 
-
 		static public void EqualInt(String name, int a, int b)
 		{
 			if (!(a == b))
@@ -410,7 +403,6 @@ namespace RedBlobHexagons
 				Tests.Complain(name);
 			}
 		}
-
 
 		static public void EqualHexArray(String name, List<Hex> a, List<Hex> b)
 		{
@@ -421,49 +413,41 @@ namespace RedBlobHexagons
 			}
 		}
 
-
 		static public void TestHexArithmetic()
 		{
 			Tests.EqualHex("hex_add", new Hex(4, -10, 6), new Hex(1, -3, 2).Add(new Hex(3, -7, 4)));
 			Tests.EqualHex("hex_subtract", new Hex(-2, 4, -2), new Hex(1, -3, 2).Subtract(new Hex(3, -7, 4)));
 		}
 
-
 		static public void TestHexDirection()
 		{
 			Tests.EqualHex("hex_direction", new Hex(0, -1, 1), Hex.Direction(2));
 		}
-
 
 		static public void TestHexNeighbor()
 		{
 			Tests.EqualHex("hex_neighbor", new Hex(1, -3, 2), new Hex(1, -2, 1).Neighbor(2));
 		}
 
-
 		static public void TestHexDiagonal()
 		{
 			Tests.EqualHex("hex_diagonal", new Hex(-1, -1, 2), new Hex(1, -2, 1).DiagonalNeighbor(3));
 		}
-
 
 		static public void TestHexDistance()
 		{
 			Tests.EqualInt("hex_distance", 7, new Hex(3, -7, 4).Distance(new Hex(0, 0, 0)));
 		}
 
-
 		static public void TestHexRotateRight()
 		{
 			Tests.EqualHex("hex_rotate_right", new Hex(1, -3, 2).RotateRight(), new Hex(3, -2, -1));
 		}
 
-
 		static public void TestHexRotateLeft()
 		{
 			Tests.EqualHex("hex_rotate_left", new Hex(1, -3, 2).RotateLeft(), new Hex(-2, -1, 3));
 		}
-
 
 		static public void TestHexRound()
 		{
@@ -477,12 +461,10 @@ namespace RedBlobHexagons
 			Tests.EqualHex("hex_round 5", c.HexRound(), new FractionalHex(a.q * 0.3 + b.q * 0.3 + c.q * 0.4, a.r * 0.3 + b.r * 0.3 + c.r * 0.4, a.s * 0.3 + b.s * 0.3 + c.s * 0.4).HexRound());
 		}
 
-
 		static public void TestHexLinedraw()
 		{
 			Tests.EqualHexArray("hex_linedraw", new List<Hex>{new Hex(0, 0, 0), new Hex(0, -1, 1), new Hex(0, -2, 2), new Hex(1, -3, 2), new Hex(1, -4, 3), new Hex(1, -5, 4)}, FractionalHex.HexLinedraw(new Hex(0, 0, 0), new Hex(1, -5, 4)));
 		}
-
 
 		static public void TestLayout()
 		{
@@ -492,7 +474,6 @@ namespace RedBlobHexagons
 			Layout pointy = new Layout(Layout.pointy, new Point(10.0, 15.0), new Point(35.0, 71.0));
 			Tests.EqualHex("layout", h, pointy.PixelToHexRounded(pointy.HexToPixel(h)));
 		}
-
 
 		static public void TestOffsetRoundtrip()
 		{
@@ -520,7 +501,6 @@ namespace RedBlobHexagons
 			}
 		}
 
-
 		static public void TestOffsetFromCube()
 		{
 			Tests.EqualOffsetcoord("offset_from_cube odd-r", new OffsetCoord(-2, 2), OffsetCoord.RoffsetFromCube(OffsetCoord.ODD, new Hex(-3, 2, 1)));
@@ -533,7 +513,6 @@ namespace RedBlobHexagons
 			Tests.EqualOffsetcoord("offset_from_cube even-q", new OffsetCoord(-1, -1), OffsetCoord.QoffsetFromCube(OffsetCoord.EVEN, new Hex(-1, -1, 2)));
 		}
 
-
 		static public void TestOffsetToCube()
 		{
 			Tests.EqualHex("offset_to_cube odd-r", new Hex(-3, 2, 1), OffsetCoord.RoffsetToCube(OffsetCoord.ODD, new OffsetCoord(-2, 2)));
@@ -545,7 +524,6 @@ namespace RedBlobHexagons
 			Tests.EqualHex("offset_to_cube even-q", new Hex(-2, 3, -1), OffsetCoord.QoffsetToCube(OffsetCoord.EVEN, new OffsetCoord(-2, 2)));
 			Tests.EqualHex("offset_to_cube even-q", new Hex(-1, -1, 2), OffsetCoord.QoffsetToCube(OffsetCoord.EVEN, new OffsetCoord(-1, -1)));
 		}
-
 
 		static public void TestOffsetToDoubled()
 		{
