@@ -1,3 +1,14 @@
 [gd_scene format=3 uid="uid://m30ru424m0cw"]
 
-[node name="BattleScene" type="Node2D" unique_id=301770725]
+[ext_resource type="PackedScene" uid="uid://doxx8cfful6nv" path="res://prefabs/tile.tscn" id="1_ltshs"]
+
+[node name="BattleScene" type="Node3D" unique_id=420775610]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=654377496]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 8)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1998244644]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 10)
+
+[node name="Area3D" parent="." unique_id=1320823522 instance=ExtResource("1_ltshs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2551622, 0, -1.6820402)
